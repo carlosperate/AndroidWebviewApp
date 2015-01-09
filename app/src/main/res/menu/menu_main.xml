@@ -4,15 +4,20 @@
       tools:context=".MainActivity">
     
     <item android:id="@+id/action_goto_url"
-          android:title="Goto URL"
+          android:title="@string/action_goto_url"
           android:icon="@drawable/ic_action_url_light"
           android:orderInCategory="100"
           app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/action_reload"
-          android:title="Reload URL"
+          android:title="@string/action_reload"
           android:icon="@drawable/ic_action_reload_light"
           android:orderInCategory="200"
           app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
     
 </menu>

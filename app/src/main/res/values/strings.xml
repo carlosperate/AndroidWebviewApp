@@ -2,7 +2,51 @@
 <resources>
 
     <string name="app_name">WebView App</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="action_goto_url">Goto URL</string>
+    <string name="action_reload">Reload URL</string>
     <string name="action_settings">Settings</string>
+
+    <!-- WebSettings -->
+    <string name="pref_allow_content_access_title">Allow Content Access</string>
+    <string name="pref_allow_content_access_summary"></string>
+
+    <string name="pref_allow_file_access_title">Allow File Access</string>
+    <string name="pref_allow_file_access_summary"></string>
+
+    <string name="pref_allow_universal_access_from_file_urls_title">Allow Universal Access From File URLs</string>
+    <string name="pref_allow_universal_access_from_file_urls_summary"></string>
+
+    <string name="pref_block_network_image_title">Block Network Image</string>
+    <string name="pref_block_network_image_summary"></string>
+
+    <string name="pref_block_network_loads_title">Block Network Loads</string>
+    <string name="pref_block_network_loads_summary"></string>
+
+    <string name="pref_builtin_zoom_controls_title">Built In Zoom Controls</string>
+    <string name="pref_builtin_zoom_controls_summary"></string>
+
+    <string name="pref_display_zoom_controls_title">Display Zoom Controls</string>
+    <string name="pref_display_zoom_controls_summary"></string>
+
+    <string name="pref_dom_storage_title">DOM Storage</string>
+    <string name="pref_dom_storage_summary"></string>
+
+    <string name="pref_file_access_from_file_urls_title">File Access From File URLs</string>
+    <string name="pref_file_access_from_file_urls_summary"></string>
+
+    <string name="pref_geolocation_enabled_title">Geolocation Enabled</string>
+    <string name="pref_geolocation_enabled_summary"></string>
+
+    <string name="pref_javascript_can_open_windows_automatically_title">Javascript: Can Open Windows Automatically</string>
+    <string name="pref_javascript_can_open_windows_automatically_summary"></string>
+
+    <string name="pref_javascript_enabled_title">Javascript: Enabled</string>
+    <string name="pref_javascript_enabled_summary"></string>
+
+    <string name="pref_loads_images_automatically_title">Loads Images Automatically</string>
+    <string name="pref_loads_images_automatically_summary"></string>
+
+    <string name="pref_save_form_data_title">Save Form Data</string>
+    <string name="pref_save_form_data_summary"></string>
 
 </resources>
