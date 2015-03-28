@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.http.SslError;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -46,6 +50,51 @@ public class WebviewActivity extends ActionBarActivity {
                 webview.loadUrl(ERROR_URL);
                 Log.e(TAG, "Error loading URL: " + failingUrl + " | errorCode = " + errorCode + " | description = " + description);
                 Toast.makeText(getApplicationContext(), "Error: " + description, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onReceivedSslError(final WebView view, final SslErrorHandler handler, final SslError error) {
+                super.onReceivedSslError(view, handler, error);
+
+                Log.e(TAG, "SSL Error (" + error.getPrimaryError() + ") " + error.getUrl());
+                new AlertDialog.Builder(WebviewActivity.this)
+                        .setMessage(getResources().getString(R.string.error_ssl, error.getUrl()))
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(final DialogInterface dialog, final int which) {
+                                handler.proceed();
+                                Log.w(TAG, "Loading " + error.getUrl() + " after prompting user.");
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                handler.cancel();
+                                Log.w(TAG, "Skipping: " + error.getUrl() + " after prompting user.");
+                            }
+                        })
+                        .create().show();
+            }
+
+            @Override
+            public void onPageStarted(final WebView view, String url, final Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                if (favicon != null) {
+                    getSupportActionBar().setIcon(new BitmapDrawable(getResources(), favicon));
+                }
+                Log.i(TAG, "Loading Page: " + url);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                Log.i(TAG, "Complete: " + url);
+            }
+
+            @Override
+            public void onLoadResource(final WebView view, final String url) {
+                super.onLoadResource(view, url);
+                Log.i(TAG, "Loading Resource: " + url);
             }
         });
         
@@ -105,7 +154,7 @@ public class WebviewActivity extends ActionBarActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             settings.setAllowUniversalAccessFromFileURLs(SettingsActivity.getBoolPref(context, SettingsActivity.KEY_ALLOW_UNIVERSAL_ACCESS_FROM_FILE_URLS, true));
-//            settings.setAllowFileAccessFromFileURLs(SettingsActivity.getBoolPref(context, SettingsActivity.KEY_ALLOW_FILE_ACCESS, true));
+            settings.setAllowFileAccessFromFileURLs(SettingsActivity.getBoolPref(context, SettingsActivity.KEY_ALLOW_FILE_ACCESS_FROM_FILE_URLS, true));
         }
 
         settings.setAllowContentAccess(SettingsActivity.getBoolPref(context, SettingsActivity.KEY_ALLOW_CONTENT_ACCESS, true));

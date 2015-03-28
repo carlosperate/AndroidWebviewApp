@@ -5,6 +5,7 @@
     <string name="action_goto_url">Goto URL</string>
     <string name="action_reload">Reload URL</string>
     <string name="action_settings">Settings</string>
+    <string name="error_ssl">Attempting to load insecure content: %s.\n\nWould you like to proceed?</string>
 
     <!-- WebSettings -->
     <string name="pref_allow_content_access_title">Allow Content Access</string>
@@ -31,8 +32,8 @@
     <string name="pref_dom_storage_title">DOM Storage</string>
     <string name="pref_dom_storage_summary"></string>
 
-    <string name="pref_file_access_from_file_urls_title">File Access From File URLs</string>
-    <string name="pref_file_access_from_file_urls_summary"></string>
+    <string name="pref_allow_file_access_from_file_urls_title">File Access From File URLs</string>
+    <string name="pref_allow_file_access_from_file_urls_summary"></string>
 
     <string name="pref_geolocation_enabled_title">Geolocation Enabled</string>
     <string name="pref_geolocation_enabled_summary"></string>

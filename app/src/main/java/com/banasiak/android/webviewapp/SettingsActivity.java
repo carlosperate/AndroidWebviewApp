@@ -29,7 +29,7 @@ public class SettingsActivity extends PreferenceActivity {
     public static final String KEY_LOADS_IMAGES_AUTOMATICALLY = "loads_images_automatically";
     public static final String KEY_SAVE_FORM_DATA = "save_form_data";
     public static final String KEY_ALLOW_UNIVERSAL_ACCESS_FROM_FILE_URLS = "allow_universal_access_from_file_urls";
-    public static final String KEY_FILE_ACCESS_FROM_FILE_URLS = "file_access_from_file_urls";
+    public static final String KEY_ALLOW_FILE_ACCESS_FROM_FILE_URLS = "allow_file_access_from_file_urls";
 
     public static boolean getBoolPref(final Context context, final String key, final boolean defaultValue) {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, defaultValue);
