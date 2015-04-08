@@ -14,7 +14,7 @@ public class SettingsActivity extends PreferenceActivity {
     private static final String TAG = SettingsActivity.class.getSimpleName();
     
     private static final String KEY_URL = "url";
-    private static final String KEY_URL_DEF = "http://www.banasiak.com";
+    private static final String KEY_URL_DEF = "http://www.embeddedlog.com";
 
     public static final String KEY_ALLOW_CONTENT_ACCESS = "allow_content_access";
     public static final String KEY_ALLOW_FILE_ACCESS = "allow_file_access";
